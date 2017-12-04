@@ -1,0 +1,15 @@
+import matplotlib.numerix as nx
+import pylab as p
+
+def boltzman(x, xmid, tau):
+    """
+    evaluate the boltzman function with midpoint xmid and time constant tau
+    over x
+    """
+    return 1. / (1. + nx.exp(-(x-xmid)/tau))
+
+x = nx.arange(-6, 6, .01)
+S = boltzman(x, 0, 1)
+Z = 1-boltzman(x, 0.5, 1)
+p.plot(x, S, x, Z, color='red', lw=2)
+p.show()
